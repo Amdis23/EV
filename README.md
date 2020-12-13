@@ -11,3 +11,4 @@ Dynamics data.
 
 
 P.S: Not all database is uploaded, to request that email the captain, electric system head or previous year's captain or electric system head (that is me btw).
+If not from PDPU contact banerjeeankit12345@gmail.com
