@@ -1,0 +1,29 @@
+# Controls-Team soverign PDPU
+First copy controls, xbox and eklavya4_roboteq folders to a new folder and catkin_make. Preferably name the workspace catkin_ws because all launch files are written for catkin_ws name. If name is different, then launch files have to be changed, or source ./devel/setup.bash in each terminal split. 
+
+#Installing Arduino Libraries
+For Using Arduino Due in Linux, you need to get the latest version of the IDE from www.arduino.cc, extract the tarball archive to a folder, cd to the folder and run ./arduino to run the IDE. For adding a new zip library, go to Tools>Import Library>Add Libraries and select the two zip files. The rosserial lib has to be installed manually which is a 5 minute tutorial at http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup
+
+#Running Files 
+(All in sudo su root access, open root terminal for quick access)
+
+Running order is (Copy all updated files in launch files folder to your home folder)
+1. xboxdrv.sh 
+2. launch.sh 
+3. cd Arduino/./arduino for arduino IDE 1.6.4 (open serial port of arduino labelled DAC)
+4. encoder_pkg.sh 
+5. robo_launch.sh
+
+#Launch Files
+Main launch file for controls package is fullcontrol.launch, has parameters for PID tuning and setting loop rates along with constraints on max, min values
+
+#Notes
+1. Pressing Red and Yellow Buttons in succession on the Xbox resets the target velocities and target curvature, and also their accumulated integral error, bringing bot to free run condition with no velocity.
+2. Left top button enables manual mode, Right Top enables autonomous mode. Both these buttons also change the target velocities and curvature to zero and set integrals to zero, much like the red and yellow buttons.
+3. To plot and view graphs of pid tuning, run 'rqt_plot /va /vt' and 'rqt_plot /ca /ct'.
+4. Never close the launch.sh with the serial port of the arduino on and displaying data. It causes the BLDC to go crazy.
+
+#Xbee Config
+Already two sets of Xbees have been configured. They can be configured in Windows using X-CTU (old 5.2 version to configure) the XBees. Both the configuration have been stored as .pro files in a separate XBee folder, just load  to set profile after installing software.
+To program XBee, short 5v and reset of Arduino Mega and supply 3.3V and GND to XBee, then connect TX to corresponding RX and RX to corresponding TX. Then run X-CTU to program XBee
+
